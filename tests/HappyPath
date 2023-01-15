@@ -1,0 +1,66 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.goto('https://console.dataloop.ai/');
+  await page.goto('https://console.dataloop.ai/welcome?redirect=%2Fprojects');
+  await page.getByRole('button', { name: 'Sign Up / Login' }).click();
+  await page.getByPlaceholder('yours@example.com').click();
+  await page.getByPlaceholder('yours@example.com').fill('assafelal06@gmail.com');
+  await page.getByPlaceholder('your password').click();
+  await page.getByPlaceholder('your password').fill('Danield!997');
+  await page.locator('button[name="submit"]').click();
+  await page.goto('https://console.dataloop.ai/projects');
+  await page.getByRole('button', { name: 'Go to project' }).click();
+  await page.getByRole('button', { name: 'browse' }).click();
+  await page.locator('#item_open_button_63c4441b59389419197809a8').click();
+  await page.locator('#item_open_button_63c4441b59389419197809a8').click();
+  await page.locator('#item_open_button_63c4441b59389419197809a8').click();
+  await page.getByRole('checkbox').first().click();
+  await page.locator('.annotations-actions > div > div:nth-child(4) > .q-btn').click();
+  await page.getByRole('button', { name: 'yes' }).click();
+  await page.locator('div:nth-child(4) > .dl-btn > .q-btn').first().click();
+  await page.locator('#box_container canvas').nth(1).click({
+    position: {
+      x: 655,
+      y: 324
+    }
+  });
+  await page.locator('#box_container canvas').nth(1).click({
+    position: {
+      x: 100,
+      y: 65
+    }
+  });
+  await page.locator('#box_container canvas').nth(1).click({
+    position: {
+      x: 564,
+      y: 141
+    }
+  });
+  await page.locator('#box_container canvas').nth(1).click({
+    position: {
+      x: 648,
+      y: 217
+    }
+  });
+  await page.locator('#box_container canvas').nth(1).click({
+    position: {
+      x: 648,
+      y: 303
+    }
+  });
+  await page.locator('#box_container canvas').nth(1).click({
+    position: {
+      x: 692,
+      y: 351
+    }
+  });
+  await page.locator('#box_container canvas').nth(1).click({
+    position: {
+      x: 120,
+      y: 97
+    }
+  });
+  await page.locator('.save-btn > .q-btn').click();
+  await page.getByRole('button', { name: 'Go to: Dataset Browser' }).click();
+});
