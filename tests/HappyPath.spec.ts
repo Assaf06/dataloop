@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
-import { Login } from '../src/Pages/loginPage'
-import { Dataset } from '../src/Pages/dataset'
-import { AnnotationStudio } from '../src/Pages/annotationStudion'
+import { Login } from '../Pages/loginPage'
+import { Dataset } from '../Pages/dataset'
+import { AnnotationStudio } from '../Pages/annotationStudion'
 
 test.use({ viewport: { width: 1920, height: 1080 } });
 test('DataLoop Happy Path test', async ({ page, request }) => {
@@ -10,8 +10,10 @@ test('DataLoop Happy Path test', async ({ page, request }) => {
   const annotationStudio = new AnnotationStudio(page);
 
   await login.login();
+
   await dataset.navigateTo();
   await dataset.openItemInAnnotationStudio();
+
   await annotationStudio.deleteCurrentAnnotations();
   await annotationStudio.canvasBoxDrawByPixels();
   
