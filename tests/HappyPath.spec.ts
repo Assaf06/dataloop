@@ -84,26 +84,3 @@ test('DataLoop Happy Path test', async ({ page, request }) => {
     }
   ]);
 });
-
-// scenario 1 - user can annotate 2 different annotations types for the same label
-// login, project, dataset, item, annotation studio,
-// add elipse annoatation in the middle of the image, save 
-// add box annotation in the middle of the image, save 
-// with the same API, check there are 2 annotation with the label "box"
-// also check the coordiates are right. 
-
-//scenario 2 - check items filter functionallity 
-//check item(which is not annotated yet) is appear in the dataset main view 
-//add 'item status' filter - "not annotated"
-// check item is still present 
-// add annotation to the item
-// add 'item status' filter - "annotated"
-//expect - item is not present
-//remove 'item status' filter - 'annotated' 
-//expect - item is present
-
-
-
-//Explain in bullets and % - 
-//what were your roles and responsibilities 
-//and how was your time divided between tasks in a project?
