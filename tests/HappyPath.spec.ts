@@ -16,21 +16,17 @@ test('DataLoop Happy Path test', async ({ page, request }) => {
 
   await annotationStudio.deleteCurrentAnnotations();
   await annotationStudio.canvasBoxDrawByPixels();
-  
+
   let itemId = await annotationStudio.getItemId();
-  
+
   //API request to get annotation props
-  const annotation1 = await request.get(`http://gate.dataloop.ai/api/v1/datasets/{datasetId}/items/63c4441b59389419197809a8/annotations`);
-  expect(annotation1[0].coordinates).toBe([
-    {
-      "x": 480.26,
-      "y": 269.08,
-      "z": 0
-    },
-    {
-      "x": 1440.79,
-      "y": 809.8699999999999,
-      "z": 0
-    }
-  ]);
+  const annotation1 = await page.request.get(`https://gate.dataloop.ai/api/v1/items/${itemId.trim()}/annotations`);
+  let coord = await annotation1.json();
+  coord = coord[0].coordinates;
+  let expectedResults = [
+    { x: 480.26, y: 269.08, z: 0 },
+    { x: 1440.79, y: 809.8699999999999, z: 0 }
+  ];
+  
+  expect(coord).toEqual(expectedResults);
 });
